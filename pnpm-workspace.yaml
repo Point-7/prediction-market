@@ -3,10 +3,11 @@ shellEmulator: true
 blockExoticSubdeps: true
 trustPolicy: no-downgrade
 trustPolicyExclude:
-  - '@noble/curves@1.8.0'
-  - '@noble/hashes@1.7.0'
+  # semver 6 is required by Babel/Next/Sentry transitive tooling.
   - semver@6.3.1
+  # slow-redact is pinned through pino -> @walletconnect/logger.
   - slow-redact@0.3.2
+  # tinyexec is required by Vitest/lint-staged/Fumadocs tooling.
   - tinyexec@1.2.2
 
 allowBuilds:
@@ -23,3 +24,5 @@ allowBuilds:
 overrides:
   '@wagmi/connectors': 6.2.0
   '@wagmi/core': 2.22.1
+  '@walletconnect/relay-auth>@noble/curves': 1.8.1
+  '@walletconnect/relay-auth>@noble/hashes': 1.7.1
